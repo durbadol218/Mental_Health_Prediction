@@ -47,8 +47,15 @@ print(classification_report(y_test, y_pred))
 print("ROC-AUC:", roc_auc_score(y_test, model.predict_proba(X_test)[:, 1]))
 
 # Save model
+with open('models/scaler.pkl', 'wb') as f:
+    pickle.dump(scaler, f)
+
 with open('models/model.pkl', 'wb') as f:
     pickle.dump(model, f)
+
+with open('models/columns.pkl', 'wb') as f:
+    pickle.dump(X.columns.tolist(), f)
+
 # model = pickle.load(open('models/model.pkl', 'rb'))
 # print(model)
 
